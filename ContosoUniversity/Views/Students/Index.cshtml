@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - All views are displayed in a table format---->
+    <thead>
+        <tr>
+            <th>
+                <!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - These are headings for across the index page ---->
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)  <!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - DisplayFor gathers & displays data from student item ---->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)  <!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - Gathering & Displaying data from student item ---->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)  <!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - Gathering & Displaying data from student item ---->
+                </td>
+                <td>
+                    |<!------tinfo200:[2021-03-12-<meeras4>-dykstra2] - These are the *action* options given when you are in the student database  ---->
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
